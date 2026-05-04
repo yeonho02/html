@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Book PDF Reader</title>
+    <meta name="description" content="Experience realistic page-turning effects with this interactive E-Book Web Reader.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <!-- PageFlip -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="bg-elements">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="container">
+        <header class="glass-panel text-center">
+            <h1 class="gradient-text">Interactive E-Book Reader</h1>
+            <p class="subtitle">Upload any PDF file to transform it into a beautiful, page-turning book.</p>
+            
+            <div class="upload-section">
+                <input type="file" id="pdf-upload" accept="application/pdf" class="hidden-input">
+                <label for="pdf-upload" class="upload-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    <span>Choose PDF File</span>
+                </label>
+                <div id="file-name" class="file-name"></div>
+            </div>
+            
+            <div id="loading" class="loading-container" style="display: none;">
+                <div class="spinner"></div>
+                <p id="loading-text">Processing your PDF...</p>
+                <div class="progress-bar">
+                    <div id="progress" class="progress"></div>
+                </div>
+            </div>
+        </header>
+
+        <main id="book-area" style="display: none;">
+            <div class="book-controls glass-panel">
+                <button id="prev-btn" class="control-btn" aria-label="Previous Page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <span id="page-info" class="page-info">Page 1 of ?</span>
+                <button id="next-btn" class="control-btn" aria-label="Next Page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+            </div>
+            
+            <div class="book-wrapper">
+                <div id="book">
+                    <!-- Pages go here -->
+                </div>
+            </div>
+            
+            <div class="book-instructions">
+                Drag the corners or click the edges to flip pages.
+            </div>
+        </main>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
